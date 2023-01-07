@@ -1,0 +1,9 @@
+<h1>{{ title }}</h1>
+
+<div *ngIf="games.length">Coucou</div>
+<div *ngFor="let game of games">
+
+  <p>{{game?.id}}</p>
+  <p>{{game?.title}}</p>
+
+</div>
