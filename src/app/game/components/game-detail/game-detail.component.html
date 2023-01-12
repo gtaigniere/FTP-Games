@@ -1,5 +1,35 @@
-<h1>Un jeu</h1>
+<h1>{{ game?.title }}</h1>
 
-<h2>{{ game?.title }}</h2>
+<p>{{ game?.description }}</p>
 
-<p>{{ game?.genre }}</p>
+<div class="informations">
+  <div class="infos-begin">
+    <p>{{ game?.genre }}</p>
+    <p>{{ game?.platform }}</p>
+    <p>{{ game?.developer }}</p>
+    <p>{{ game?.releaseDate }}</p>
+  </div>
+
+  <div class="requirements">
+    <h2>Minimum System Requirements</h2>
+<!--    <p>{{ game?.MinSystemReq.os }}</p>-->
+<!--    <p>{{ game?.MinSystemReq.processor }}</p>-->
+<!--    <p>{{ game?.MinSystemReq.memory }}</p>-->
+<!--    <p>{{ game?.MinSystemReq.graphics }}</p>-->
+<!--    <p>{{ game?.MinSystemReq.storage }}</p>-->
+  </div>
+</div>
+
+<div class="screenshots">
+  <h3>Screenshots</h3>
+
+  <div class="images">
+
+    <div *ngFor="let screenshot of game?.screenshots">
+      <div class="screenshot">
+<!--        <img src="{{ screenshot.image }}" alt="">-->
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,11 +1,12 @@
 export interface Game {
   id: number;
   title: string;
-  thumbmail?: string;
+  thumbnail?: string;
   description?: string;
-  gameUrl?: string;
   genre?: string;
   platform?: string;
   developer?: string;
   releaseDate?: Date;
+  MinSystemReq?: string[];
+  screenshots?: string[];
 }

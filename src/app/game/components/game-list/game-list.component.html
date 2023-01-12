@@ -1,9 +1,18 @@
-<h1>{{ title }}</h1>
+<div class="title">
+  <h1>{{ title }}</h1>
+</div>
 
-<div *ngIf="games.length">Coucou</div>
-<div *ngFor="let game of games">
+<div class="main">
 
-  <p>{{game?.id}}</p>
-  <p>{{game?.title}}</p>
+  <div class="list">
 
+    <div *ngFor="let game of games">
+      <div class="thumbnails">
+        <img (click)="displayGameDetails(game.id)" src="{{ game?.thumbnail }}" alt="">
+      </div>
+    </div>
+
+  </div>
+
+  <app-game-detail class="details" [game]="activeGame"></app-game-detail>
 </div>

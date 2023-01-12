@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Game} from "../models/game";
 
 @Injectable({
@@ -20,16 +20,12 @@ export class GameService {
   ) {
   }
 
-  // return this.httpClient.get(this.baseURL + 'users/' + userName + '/repos', { 'headers': headers })
   getById(id: string): Observable<Game> {
-    //return this.httpClient.get<Game>(`${this.API_URL}/game?id=${id}`, {'headers': headers});
-    return this.httpClient.get<Game>(`${this.API_URL}/game?id=${id}`);
+    return this.httpClient.get<Game>(`${this.API_URL}/game?id=${id}`, {'headers': this.headers});
   }
 
   getAll(): Observable<Game[]> {
-    let bucket = ''; // {bucket} est équivalent à {'bucket': bucket}
     return this.httpClient.get<Game[]>(`${this.API_URL}/games`, {'headers': this.headers});
-    // return this.httpClient.get<Game[]>(`${this.API_URL}/games`);
   }
 
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {Game} from "../../models/game";
 
@@ -9,8 +9,10 @@ import {Game} from "../../models/game";
 })
 export class GameListComponent implements OnInit {
 
-  title: string = 'Liste des jeux';
+  title: string = 'Les jeux Free-To-Play';
   games: Game[] = [];
+  activeGame: Game;
+  id: Number;
 
   constructor(
     private gameService: GameService
@@ -21,10 +23,15 @@ export class GameListComponent implements OnInit {
     this.gameService.getAll().subscribe(
       games => {
         this.games = games;
-        console.table(this.games);
       }
     );
-    console.log('coucou');
+    this.displayGameDetails(this.id = 540)
+  }
+
+  displayGameDetails(id: number) {
+    this.gameService.getById('id').subscribe(
+      activeGame => this.activeGame = activeGame
+    );
   }
 
 }

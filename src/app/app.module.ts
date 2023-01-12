@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
+import {BrowserModule} from "@angular/platform-browser";
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {RouterModule} from '@angular/router';
+import {GameModule} from "./game/game.module";
 import {HttpClientModule} from "@angular/common/http";
-import {CommonModule} from "@angular/common";
-import {BrowserModule} from "@angular/platform-browser";
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,12 +13,11 @@ import {BrowserModule} from "@angular/platform-browser";
   ],
   imports: [
     BrowserModule,
-    CommonModule,
     AppRoutingModule,
+    GameModule,
     HttpClientModule,
     RouterModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
