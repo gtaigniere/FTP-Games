@@ -20,7 +20,7 @@ export class GameService {
   ) {
   }
 
-  getById(id: string): Observable<Game> {
+  getById(id: number): Observable<Game> {
     return this.httpClient.get<Game>(`${this.API_URL}/game?id=${id}`, {'headers': this.headers});
   }
 

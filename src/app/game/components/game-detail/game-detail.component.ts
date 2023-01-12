@@ -22,10 +22,12 @@ export class GameDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
-      // Effectue un appel ajax et obtient les informations demandées lors d'un changement
-      this.gameService.getById('id').subscribe(
-        game => this.game = game
-      );
+      if (id) {
+        // Effectue un appel ajax et obtient les informations demandées lors d'un changement
+        this.gameService.getById(+id).subscribe(
+          game => this.game = game
+        );
+      }
     });
   }
 
