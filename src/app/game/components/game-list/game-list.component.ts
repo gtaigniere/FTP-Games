@@ -25,7 +25,7 @@ export class GameListComponent implements OnInit {
         this.games = games;
       }
     );
-    this.displayGameDetails(this.id = 540)
+    this.displayGameDetails(this.id = 540) //id par défaut
   }
 
   displayGameDetails(id: number) {
