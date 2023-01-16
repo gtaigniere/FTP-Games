@@ -7,18 +7,25 @@
     <p>Genre : {{ game?.genre }}</p>
     <p>Plateforme : {{ game?.platform }}</p>
     <p>Développeur : {{ game?.developer }}</p>
-  <!--    ex : voir avec https://www.freetogame.com/api/game?id=452-->
-    <p>Date de sortie : {{ game?.releaseDate }}</p>
+    <p>Date de sortie : {{ game?.releaseDate | date:'dd MMM yyyy' }}</p>
   </div>
 
   <div class="requirements">
+
     <h2>Minimum System Requirements</h2>
-    <!--    ex : voir avec https://www.freetogame.com/api/game?id=452-->
-    <p>OS : {{ game?.MinSystemReq }}</p>
-    <p>Processeur : {{ game?.MinSystemReq }}</p>
-    <p>Mémoire : {{ game?.MinSystemReq }}</p>
-    <p>Cartes vidéos : {{ game?.MinSystemReq }}</p>
-    <p>Stockage : {{ game?.MinSystemReq }}</p>
+
+    <div class="noInfosMinSysReq" *ngIf="game?.MinSystemReq?.os === null &&
+game?.MinSystemReq?.processor === null &&
+game?.MinSystemReq?.memory === null &&
+game?.MinSystemReq?.graphics === null &&
+game?.MinSystemReq?.storage === null;else contenu_ok"><p>Nous ne disposons pas de ces informations.</p></div>
+    <ng-template #contenu_ok>
+      <p>OS : {{ game?.MinSystemReq?.os }}</p>
+      <p>Processeur : {{ game?.MinSystemReq?.processor }}</p>
+      <p>Mémoire : {{ game?.MinSystemReq?.memory }}</p>
+      <p>Cartes vidéos : {{ game?.MinSystemReq?.graphics }}</p>
+      <p>Stockage : {{ game?.MinSystemReq?.storage }}</p>
+    </ng-template>
   </div>
 </div>
 
@@ -27,10 +34,9 @@
 
   <div class="images">
 
-    <!--    ex : voir avec https://www.freetogame.com/api/game?id=452-->
-    <div *ngFor="let screenshot of game?.screenshots; let i = index">
+    <div *ngFor="let screenshot of game?.screenshots">
       <div class="screenshot">
-        <img src="{{ screenshot[i].image }}" alt="">
+        <img src="{{ screenshot?.image }}" alt="">
       </div>
     </div>
 

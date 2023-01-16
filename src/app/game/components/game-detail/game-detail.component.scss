@@ -52,15 +52,26 @@ h1 {
   width: 46%;
 }
 
-.requirements p {
-  margin: 0px;
-  font-family: sans-serif;
-  letter-spacing: 1px;
+.noInfosMinSysReq {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  border-radius: 4px;
+  color: white;
 }
 
 h2 {
   margin: 0 auto 8px;
   font-size: 1rem;
+}
+
+.requirements p, li {
+  margin: 0;
+  font-family: sans-serif;
+  letter-spacing: 1px;
 }
 
 .screenshots {
@@ -76,22 +87,25 @@ h3 {
 }
 
 .images {
+  margin-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .images > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
-  height: 180px;
 }
 
 .screenshot {
+  padding: 0 3px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+img {
+  width: 240px;
 }

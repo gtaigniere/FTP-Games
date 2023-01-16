@@ -30,7 +30,8 @@ export class GameListComponent implements OnInit {
 
   displayGameDetails(id: number) {
     this.gameService.getById(id).subscribe(
-      activeGame => this.activeGame = activeGame
+      activeGame => {this.activeGame = activeGame;
+        console.log(activeGame.MinSystemReq);}
     );
   }
 

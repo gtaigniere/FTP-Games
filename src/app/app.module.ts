@@ -4,8 +4,9 @@ import {BrowserModule} from "@angular/platform-browser";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GameModule} from "./game/game.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterModule} from '@angular/router';
+import {InterceptReqInterceptor} from "./intercept-req.interceptor";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,9 @@ import {RouterModule} from '@angular/router';
     GameModule,
     HttpClientModule,
     RouterModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
