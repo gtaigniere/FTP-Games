@@ -8,7 +8,7 @@
 
     <div *ngFor="let game of games">
       <div class="thumbnails">
-        <img (click)="displayGameDetails(game.id)" src="{{ game?.thumbnail }}" alt="">
+        <img (click)="displayGameDetails(game.id)" src="{{ game?.thumbnail }}" alt="{{ game?.title }}">
       </div>
     </div>
 

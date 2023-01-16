@@ -19,14 +19,31 @@ h1 {
 }
 
 .list {
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  overflow-x: scroll;
+}
+
+.list > div {
+  padding: 12px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
 }
 
 .thumbnails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+}
+
+img {
+  width: 300px;
 }
 
 .details {

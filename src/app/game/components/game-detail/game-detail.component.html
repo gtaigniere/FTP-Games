@@ -1,22 +1,24 @@
 <h1>{{ game?.title }}</h1>
 
-<p>{{ game?.description }}</p>
+<p class="description">{{ game?.description }}</p>
 
 <div class="informations">
   <div class="infos-begin">
-    <p>{{ game?.genre }}</p>
-    <p>{{ game?.platform }}</p>
-    <p>{{ game?.developer }}</p>
-    <p>{{ game?.releaseDate }}</p>
+    <p>Genre : {{ game?.genre }}</p>
+    <p>Plateforme : {{ game?.platform }}</p>
+    <p>Développeur : {{ game?.developer }}</p>
+  <!--    ex : voir avec https://www.freetogame.com/api/game?id=452-->
+    <p>Date de sortie : {{ game?.releaseDate }}</p>
   </div>
 
   <div class="requirements">
     <h2>Minimum System Requirements</h2>
-<!--    <p>{{ game?.MinSystemReq.os }}</p>-->
-<!--    <p>{{ game?.MinSystemReq.processor }}</p>-->
-<!--    <p>{{ game?.MinSystemReq.memory }}</p>-->
-<!--    <p>{{ game?.MinSystemReq.graphics }}</p>-->
-<!--    <p>{{ game?.MinSystemReq.storage }}</p>-->
+    <!--    ex : voir avec https://www.freetogame.com/api/game?id=452-->
+    <p>OS : {{ game?.MinSystemReq }}</p>
+    <p>Processeur : {{ game?.MinSystemReq }}</p>
+    <p>Mémoire : {{ game?.MinSystemReq }}</p>
+    <p>Cartes vidéos : {{ game?.MinSystemReq }}</p>
+    <p>Stockage : {{ game?.MinSystemReq }}</p>
   </div>
 </div>
 
@@ -25,9 +27,10 @@
 
   <div class="images">
 
-    <div *ngFor="let screenshot of game?.screenshots">
+    <!--    ex : voir avec https://www.freetogame.com/api/game?id=452-->
+    <div *ngFor="let screenshot of game?.screenshots; let i = index">
       <div class="screenshot">
-<!--        <img src="{{ screenshot.image }}" alt="">-->
+        <img src="{{ screenshot[i].image }}" alt="">
       </div>
     </div>
 
