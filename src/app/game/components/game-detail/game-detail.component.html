@@ -15,10 +15,12 @@
     <h2>Minimum System Requirements</h2>
 
     <div class="noInfosMinSysReq" *ngIf="game?.MinSystemReq?.os === null &&
-game?.MinSystemReq?.processor === null &&
-game?.MinSystemReq?.memory === null &&
-game?.MinSystemReq?.graphics === null &&
-game?.MinSystemReq?.storage === null;else contenu_ok"><p>Nous ne disposons pas de ces informations.</p></div>
+      game?.MinSystemReq?.processor === null &&
+      game?.MinSystemReq?.memory === null &&
+      game?.MinSystemReq?.graphics === null &&
+      game?.MinSystemReq?.storage === null;else contenu_ok">
+      <p>Nous ne disposons pas de ces informations.</p>
+    </div>
     <ng-template #contenu_ok>
       <p>OS : {{ game?.MinSystemReq?.os }}</p>
       <p>Processeur : {{ game?.MinSystemReq?.processor }}</p>
