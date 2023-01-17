@@ -10,7 +10,7 @@ h1 {
   color: white;
 }
 
-.main {
+.list {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,32 +18,12 @@ h1 {
   width: 100%;
 }
 
-.list {
-  padding: 0 10px;
+.carousel {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   overflow-x: scroll;
-}
-
-.list > div {
-  padding: 12px 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-}
-
-.thumbnails {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-img {
-  width: 300px;
 }
 
 .details {

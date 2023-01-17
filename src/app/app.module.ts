@@ -7,20 +7,24 @@ import {GameModule} from "./game/game.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterModule} from '@angular/router';
 import {InterceptReqInterceptor} from "./intercept-req.interceptor";
+import {CarouselComponent} from "./components/carousel/carousel.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GameModule,
     HttpClientModule,
     RouterModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true},
+  ],
+  exports: [
+    CarouselComponent
   ],
   bootstrap: [AppComponent]
 })

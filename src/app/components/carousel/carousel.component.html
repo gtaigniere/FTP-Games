@@ -1,0 +1,16 @@
+<div class="items">
+
+  <div *ngFor="let game of games" class="item">
+
+    <div class="item_image">
+
+      <img (click)="sendGameId(game.id)" src="{{ game?.thumbnail }}" alt="{{ game?.title }}">
+
+    </div>
+
+  </div>
+
+</div>
+
+<img id="left-arrow" src="../../../assets/fleche-gauche.png" alt="left-arrow"/>
+<img id="right-arrow" src="../../../assets/fleche-droite.png" alt="right-arrow"/>

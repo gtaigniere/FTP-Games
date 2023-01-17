@@ -11,8 +11,9 @@ export class GameListComponent implements OnInit {
 
   title: string = 'Les jeux Free-To-Play';
   games: Game[] = [];
-  activeGame?: Game;
   id?: number;
+  activeGame?: Game;
+  receivedId: number = 540;
 
   constructor(
     private gameService: GameService
@@ -20,11 +21,6 @@ export class GameListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gameService.getAll().subscribe(
-      games => {
-        this.games = games;
-      }
-    );
     this.displayGameDetails(this.id = 540) //id par défaut
   }
 
@@ -34,4 +30,7 @@ export class GameListComponent implements OnInit {
     );
   }
 
+  receivedGameId(id: number) {
+    this.receivedId = id;
+  }
 }

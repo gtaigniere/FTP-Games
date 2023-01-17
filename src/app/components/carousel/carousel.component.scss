@@ -1,0 +1,39 @@
+.items {
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 1040px;
+  position: relative;
+  overflow: scroll;
+}
+
+.item {
+}
+
+.item_image {
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 340px;
+  cursor: pointer;
+}
+
+#left-arrow {
+  width: 40px;
+  position: absolute;
+  left: 120px;
+  cursor: pointer;
+}
+
+#right-arrow {
+  width: 40px;
+  position: absolute;
+  right: 120px;
+  cursor: pointer;
+}

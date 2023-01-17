@@ -2,6 +2,7 @@ export interface Game {
   id: number;
   title: string;
   thumbnail?: string;
+  short_description?: string;
   description?: string;
   genre?: string;
   platform?: string;
@@ -24,6 +25,7 @@ export const createGame = (data: any) => ({
   id: data.id,
   title: data.title,
   thumbnail: data.thumbnail,
+  short_description: data.short_description,
   description: data.description,
   genre: data.genre,
   platform: data.platform,
