@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {Game} from "../../models/game";
 import {Observable} from "rxjs";
@@ -8,13 +8,11 @@ import {Observable} from "rxjs";
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.scss']
 })
-export class GameListComponent implements OnInit, OnChanges {
+export class GameListComponent implements OnInit {
 
   title: string = 'Les jeux Free-To-Play';
   games: Game[] = [];
   activeGame?: Game;
-
-  @Input()
   receivedId?: number;
 
   constructor(
@@ -25,10 +23,6 @@ export class GameListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.displayGamesList();
     this.displayGameDetails(this.receivedId = 1); //id par défaut
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log('Id reçu depuis variable "receivedId" : ' + this.receivedId);
   }
 
   displayGamesList() {
@@ -45,6 +39,6 @@ export class GameListComponent implements OnInit, OnChanges {
 
   receivedGameId(id: number) {
     this.receivedId = id;
-    console.log('Id reçu depuis "Carousel" : ' + this.receivedId);
+    this.displayGameDetails(this.receivedId);
   }
 }
