@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {GameService} from "../../services/game.service";
-import {Game} from "../../models/game";
+import {GameService} from '../../services/game.service';
+import {Game} from '../../models/game';
 
 @Component({
-  selector: 'app-game-list',
-  templateUrl: './game-list.component.html',
-  styleUrls: ['./game-list.component.scss']
+  selector: 'app-game-home-page',
+  templateUrl: './game-home-page.component.html',
+  styleUrls: ['./game-home-page.component.scss']
 })
-export class GameListComponent implements OnInit {
+export class GameHomePageComponent implements OnInit {
 
   title: string = 'Les jeux Free-To-Play';
   games: Game[] = [];
