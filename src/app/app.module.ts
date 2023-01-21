@@ -16,6 +16,7 @@ import {CarouselComponent} from "./components/carousel/carousel.component";
   ],
   imports: [
     BrowserModule,
+    GameModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule
@@ -24,6 +25,7 @@ import {CarouselComponent} from "./components/carousel/carousel.component";
     {provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true},
   ],
   exports: [
+    GameModule,
     CarouselComponent
   ],
   bootstrap: [AppComponent]
