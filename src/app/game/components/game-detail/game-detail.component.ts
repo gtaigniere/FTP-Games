@@ -13,7 +13,6 @@ export class GameDetailComponent implements OnInit {
   game?: Game;
   email?: string;
   pwd?: string;
-  user: User;
 
   constructor() {
   }
@@ -22,11 +21,11 @@ export class GameDetailComponent implements OnInit {
     this.email = localStorage.getItem('email');
     this.pwd = localStorage.getItem('pwd');
     if (this.email !== '' && this.pwd !== '') {
-      this.user = {
+      const user: User = {
         email: this.email,
         password: this.pwd
       };
-      console.log(this.user);
+      console.log(user);
     }
   }
 
