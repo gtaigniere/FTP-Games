@@ -7,7 +7,8 @@ import {GameModule} from './game/game.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {InterceptReqInterceptor} from './intercept-req.interceptor';
-import {CarouselComponent} from './shared/components/carousel/carousel.component';
+import {FormsModule} from '@angular/forms';
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import {CarouselComponent} from './shared/components/carousel/carousel.component
     GameModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    AuthModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true},
