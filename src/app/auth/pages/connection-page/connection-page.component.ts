@@ -11,7 +11,8 @@ export class ConnectionPageComponent implements OnInit {
 
   title: string = 'Connexion';
   submitted = false;
-  user: User;
+  email?: string;
+  pwd?: string;
 
   constructor() {
   }
@@ -21,11 +22,11 @@ export class ConnectionPageComponent implements OnInit {
 
   loginUser(form: NgForm) {
     this.submitted = true;
-    this.user = {
-      email: form.value.user.email,
-      password: form.value.user.password
+    const user: User = {
+      email: form.value.email,
+      password: form.value.pwd
     };
-    console.table(this.user);
+    console.table(user);
   }
 
 }
