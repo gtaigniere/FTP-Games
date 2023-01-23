@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {User} from "../../../shared/models/user";
-import {AstObject} from "@angular/compiler-cli/linker/src/ast/ast_value";
 
 @Component({
   selector: 'app-connection-page',
