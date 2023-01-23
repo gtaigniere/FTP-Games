@@ -18,15 +18,6 @@ export class GameDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.email = localStorage.getItem('email');
-    this.pwd = localStorage.getItem('pwd');
-    if (this.email !== '' && this.pwd !== '') {
-      const user: User = {
-        email: this.email,
-        password: this.pwd
-      };
-      console.log(user);
-    }
   }
 
 }

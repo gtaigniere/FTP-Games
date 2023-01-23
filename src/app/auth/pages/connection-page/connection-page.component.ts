@@ -10,7 +10,7 @@ import {User} from "../../../shared/models/user";
 export class ConnectionPageComponent implements OnInit {
 
   title: string = 'Connexion';
-  submitted = false;
+  // submitted = false;
   email?: string;
   pwd?: string;
 
@@ -21,12 +21,11 @@ export class ConnectionPageComponent implements OnInit {
   }
 
   loginUser(form: NgForm) {
-    this.submitted = true;
+    // this.submitted = true;
     const user: User = {
       email: form.value.email,
       password: form.value.pwd
     };
-    console.table(user);
     localStorage.setItem('email', user.email);
     localStorage.setItem('pwd', user.password);
   }
