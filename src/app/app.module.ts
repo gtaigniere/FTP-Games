@@ -10,7 +10,6 @@ import {InterceptReqInterceptor} from './core/interceptors/intercept-req.interce
 import {FormsModule} from '@angular/forms';
 import {AuthModule} from "./auth/auth.module";
 import {CoreModule} from "./core/core.module";
-import {GameGuard} from "./core/guards/game.guard";
 
 @NgModule({
   declarations: [

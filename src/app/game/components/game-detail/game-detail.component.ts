@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Game} from '../../models/game';
 import {Router} from "@angular/router";
+import {AuthService} from "../../../auth/services/auth.service";
 
 @Component({
   selector: 'app-game-detail',
@@ -15,6 +16,7 @@ export class GameDetailComponent implements OnInit {
   pwd?: string;
 
   constructor(
+    private authService: AuthService,
     private router: Router
   ) {
   }
@@ -23,7 +25,7 @@ export class GameDetailComponent implements OnInit {
   }
 
   backToConnection() {
-    localStorage.clear();
+    this.authService.logout();
     this.router.navigate(['/connection']);
   }
 

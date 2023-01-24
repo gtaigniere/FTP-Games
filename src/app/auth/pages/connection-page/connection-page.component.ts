@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {User} from "../../../shared/models/user";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-connection-page',
@@ -16,6 +17,7 @@ export class ConnectionPageComponent implements OnInit {
   pwd?: string;
 
   constructor(
+    private authService: AuthService,
     private router: Router
   ) {
   }
@@ -29,8 +31,7 @@ export class ConnectionPageComponent implements OnInit {
       email: form.value.email,
       password: form.value.pwd
     };
-    localStorage.setItem('email', user.email);
-    localStorage.setItem('pwd', user.password);
+    this.authService.login(user);
     this.router.navigate(['/games']);
   }
 
