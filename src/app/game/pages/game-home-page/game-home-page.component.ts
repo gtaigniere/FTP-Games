@@ -40,4 +40,5 @@ export class GameHomePageComponent implements OnInit {
     this.receivedId = id;
     this.displayGameDetails(this.receivedId);
   }
+
 }

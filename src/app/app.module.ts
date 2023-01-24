@@ -6,9 +6,11 @@ import {AppComponent} from './app.component';
 import {GameModule} from './game/game.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-import {InterceptReqInterceptor} from './intercept-req.interceptor';
+import {InterceptReqInterceptor} from './core/interceptors/intercept-req.interceptor';
 import {FormsModule} from '@angular/forms';
 import {AuthModule} from "./auth/auth.module";
+import {CoreModule} from "./core/core.module";
+import {GameGuard} from "./core/guards/game.guard";
 
 @NgModule({
   declarations: [
@@ -21,10 +23,11 @@ import {AuthModule} from "./auth/auth.module";
     HttpClientModule,
     RouterModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    CoreModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true},
+   {provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true}
   ],
   exports: [],
   bootstrap: [AppComponent]

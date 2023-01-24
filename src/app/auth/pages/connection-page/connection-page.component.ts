@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {User} from "../../../shared/models/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-connection-page',
@@ -14,7 +15,9 @@ export class ConnectionPageComponent implements OnInit {
   email?: string;
   pwd?: string;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
@@ -28,6 +31,7 @@ export class ConnectionPageComponent implements OnInit {
     };
     localStorage.setItem('email', user.email);
     localStorage.setItem('pwd', user.password);
+    this.router.navigate(['/games']);
   }
 
 }

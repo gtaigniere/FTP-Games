@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Game} from '../../models/game';
-import {User} from "../../../shared/models/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-game-detail',
@@ -14,10 +14,17 @@ export class GameDetailComponent implements OnInit {
   email?: string;
   pwd?: string;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
+  }
+
+  backToConnection() {
+    localStorage.clear();
+    this.router.navigate(['/connection']);
   }
 
 }
