@@ -13,8 +13,7 @@ export class AuthService {
   }
 
   login(user: User) {
-    localStorage.setItem('email', user.email);
-    localStorage.setItem('pwd', user.password);
+    localStorage.setItem('nickname', user.nickname);
     console.log('Bonjour');
   }
 
@@ -24,7 +23,7 @@ export class AuthService {
   }
 
   isAuth(): boolean {
-    if (localStorage.getItem('email') && localStorage.getItem('pwd')) {
+    if (localStorage.getItem('nickname')) {
         return true;
     }
     return false;

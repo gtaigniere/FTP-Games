@@ -13,9 +13,12 @@ import {UserService} from "../../../shared/services/user.service";
 export class ConnectionPageComponent implements OnInit {
 
   title: string = 'Connexion';
-  // submitted = false;
-  email?: string;
-  pwd?: string;
+  user: User = {
+    nickname: '',
+    email: '',
+    password: ''
+  };
+  userError: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -28,24 +31,19 @@ export class ConnectionPageComponent implements OnInit {
   }
 
   loginUser(form: NgForm) {
-    // this.submitted = true;
     const currentUser: User = {
+      nickname: '',
       email: form.value.email,
       password: form.value.pwd
     };
-    const user: User|null = this.userService.getByEmail(currentUser.email);
 
-    if (user != null) {
-      if (this.userService.verifPwd(currentUser, user)) {
-        this.authService.login(currentUser);
-        this.router.navigate(['/games']);
-      } else {
-        console.error("Mot de passe incorrecte");
-      }
+    if (this.userService.exists(currentUser)) {
+      this.authService.login(currentUser);
+      this.router.navigate(['/games']);
     } else {
-      console.error("L'utilisateur n'a pas été trouvé");
+      // Faire en sorte d'afficher un message d'erreur sur la page du formulaire
+      this.userError = true;
     }
-    this.router.navigate(['/connection']);
   }
 
 }

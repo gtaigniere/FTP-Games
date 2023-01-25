@@ -6,7 +6,7 @@
 
     <div class="form-group col-md-12 mb-3">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email"
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email"
              placeholder="nickname@test.fr" required email #emailVar="ngModel"
              [ngClass]="{'is-invalid': emailVar.touched && !emailVar.valid}">
 
@@ -22,7 +22,7 @@
 
     <div class="form-group col-md-12 mb-3">
       <label for="pwd">Mot de passe</label>
-      <input type="password" class="form-control" id="pwd" [(ngModel)]="pwd" name="pwd"
+      <input type="password" class="form-control" id="pwd" [(ngModel)]="user.password" name="pwd"
              placeholder="Mot de passe" required minlength="8" #pwdVar="ngModel"
              [ngClass]="{'is-invalid': pwdVar.touched && !pwdVar.valid}">
 
@@ -39,5 +39,9 @@
     <button type="submit" class="btn btn-info" [disabled]="loginForm.form.invalid">Se connecter</button>
 
   </form>
+
+  <p *ngIf="userError" class="alert alert-danger">
+    Email et/ou mot de passe incorrect.
+  </p>
 
 </div>

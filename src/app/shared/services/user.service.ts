@@ -6,13 +6,11 @@ import {User, users} from "../models/user";
 })
 export class UserService {
 
-  constructor() {
-  }
-
   getByEmail(email: string): User|null {
     for (let u of users) {
       if (u.email === email) {
         const user: User = {
+          nickname: '',
           email: u.email,
           password: u.password
         }
@@ -26,11 +24,8 @@ export class UserService {
     return users;
   }
 
-  verifPwd(currentUser: User, user: User): boolean {
-    if (currentUser.password === user.password) {
-      return true;
-    }
-    return false;
+  exists(user: User): boolean {
+    return users.some(u => u.email === user.email && u.password === user.password);
   }
 
 }
