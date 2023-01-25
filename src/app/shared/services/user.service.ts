@@ -6,18 +6,8 @@ import {User, users} from "../models/user";
 })
 export class UserService {
 
-  getByEmail(email: string): User|null {
-    for (let u of users) {
-      if (u.email === email) {
-        const user: User = {
-          nickname: '',
-          email: u.email,
-          password: u.password
-        }
-        return user;
-      }
-    }
-    return null;
+  getByEmail(email: string): User {
+    return users.find(user => user.email === email) as User;
   }
 
   getAll(): User[] {

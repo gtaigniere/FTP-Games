@@ -38,7 +38,9 @@ export class ConnectionPageComponent implements OnInit {
     };
 
     if (this.userService.exists(currentUser)) {
-      this.authService.login(currentUser);
+      this.authService.login(
+        this.userService.getByEmail(currentUser.email)
+      );
       this.router.navigate(['/games']);
     } else {
       // Faire en sorte d'afficher un message d'erreur sur la page du formulaire

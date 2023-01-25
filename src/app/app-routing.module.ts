@@ -6,8 +6,7 @@ import {ConnectionPageComponent} from "./auth/pages/connection-page/connection-p
 import {GameGuard} from "./core/guards/game.guard";
 
 const routes: Routes = [
-  {path: 'games', component: GameHomePageComponent, canActivate: [GameGuard]},
-  {path: 'game/:id', component: GameDetailComponent},
+  {path: '', component: GameHomePageComponent, canActivate: [GameGuard]},
   {path: 'connection', component: ConnectionPageComponent},
   {path: '**', component: GameHomePageComponent, canActivate: [GameGuard]}
 ];
