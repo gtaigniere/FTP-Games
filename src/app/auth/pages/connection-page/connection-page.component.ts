@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {User} from "../../../shared/models/user";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {UserService} from "../../../shared/services/user.service";
 
 @Component({
   selector: 'app-connection-page',
@@ -17,6 +18,7 @@ export class ConnectionPageComponent implements OnInit {
   pwd?: string;
 
   constructor(
+    private userService: UserService,
     private authService: AuthService,
     private router: Router
   ) {
@@ -27,12 +29,23 @@ export class ConnectionPageComponent implements OnInit {
 
   loginUser(form: NgForm) {
     // this.submitted = true;
-    const user: User = {
+    const currentUser: User = {
       email: form.value.email,
       password: form.value.pwd
     };
-    this.authService.login(user);
-    this.router.navigate(['/games']);
+    const user: User|null = this.userService.getByEmail(currentUser.email);
+
+    if (user != null) {
+      if (this.userService.verifPwd(currentUser, user)) {
+        this.authService.login(currentUser);
+        this.router.navigate(['/games']);
+      } else {
+        console.error("Mot de passe incorrecte");
+      }
+    } else {
+      console.error("L'utilisateur n'a pas été trouvé");
+    }
+    this.router.navigate(['/connection']);
   }
 
 }
