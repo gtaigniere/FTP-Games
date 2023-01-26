@@ -40,8 +40,6 @@
 
   </form>
 
-  <p *ngIf="userError" class="alert alert-danger">
-    Email et/ou mot de passe incorrect.
-  </p>
+  <app-message-box *ngIf="activeMsg" [class]="msgClass" [text]="msgText"></app-message-box>
 
 </div>

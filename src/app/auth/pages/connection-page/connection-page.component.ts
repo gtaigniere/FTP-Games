@@ -18,7 +18,9 @@ export class ConnectionPageComponent implements OnInit {
     email: '',
     password: ''
   };
-  userError: boolean = false;
+  activeMsg: boolean = false;
+  msgClass: string = 'alert alert-danger';
+  msgText: string = 'Email et/ou mot de passe incorrect.';
 
   constructor(
     private userService: UserService,
@@ -44,7 +46,7 @@ export class ConnectionPageComponent implements OnInit {
       this.router.navigate(['/games']);
     } else {
       // Faire en sorte d'afficher un message d'erreur sur la page du formulaire
-      this.userError = true;
+      this.activeMsg = true;
     }
   }
 
