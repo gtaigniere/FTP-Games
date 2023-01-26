@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from "../../shared/models/user";
+import {User, users} from "../../shared/models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,13 @@ export class AuthService {
     console.log('A bientôt');
   }
 
-  isAuth(): boolean {
+  isAuth(user: User): boolean {
+    return users.some(u => u.email === user.email && u.password === user.password);
+  }
+
+  isLogged(): boolean {
     if (localStorage.getItem('nickname')) {
-        return true;
+      return true;
     }
     return false;
   }

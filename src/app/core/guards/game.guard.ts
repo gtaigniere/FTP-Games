@@ -17,7 +17,7 @@ export class GameGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authService.isAuth()) {
+    if (this.authService.isLogged()) {
       return true;
     } else {
       this.router.navigate(['/connection']);

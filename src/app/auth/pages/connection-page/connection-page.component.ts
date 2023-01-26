@@ -4,6 +4,7 @@ import {User} from "../../../shared/models/user";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../../shared/services/user.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-connection-page',
@@ -18,9 +19,10 @@ export class ConnectionPageComponent implements OnInit {
     email: '',
     password: ''
   };
+
   activeMsg: boolean = false;
-  msgClass: string = 'alert alert-danger';
-  msgText: string = 'Email et/ou mot de passe incorrect.';
+  msgClass: string = '';
+  msgText: string = '';
 
   constructor(
     private userService: UserService,
@@ -38,15 +40,22 @@ export class ConnectionPageComponent implements OnInit {
       email: form.value.email,
       password: form.value.pwd
     };
-
-    if (this.userService.exists(currentUser)) {
-      this.authService.login(
-        this.userService.getByEmail(currentUser.email)
+    if (this.authService.isAuth(currentUser)) {
+      this.userService.getByEmail(currentUser.email).subscribe(
+        user => this.user = user
       );
-      this.router.navigate(['/games']);
+      try {
+        this.authService.login(this.user);
+        this.router.navigate(['/games']);
+      } catch {
+        this.activeMsg = true;
+        this.msgClass = 'alert alert-danger';
+        this.msgText = 'Email et/ou mot de passe incorrect.';
+      }
     } else {
-      // Faire en sorte d'afficher un message d'erreur sur la page du formulaire
       this.activeMsg = true;
+      this.msgClass = 'alert alert-danger';
+      this.msgText = 'L\'utilisateur n\'a pas été trouvé.';
     }
   }
 
