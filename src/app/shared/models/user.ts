@@ -1,22 +1,22 @@
 export interface User {
-  nickname: string;
+  username: string;
   email: string;
   password: string;
 }
 
 export const users = [
   {
-    nickname: 'gil',
+    username: 'gil',
     email: 'gillout@bbox.fr',
     password: 'gillout1'
   },
   {
-    nickname: 'pat',
+    username: 'pat',
     email: 'patrick@free.fr',
     password: 'patrick2'
   },
   {
-    nickname: 'jeff',
+    username: 'jeff',
     email: 'jeffrey@sfr.fr',
     password: 'jeffrey3'
   }
