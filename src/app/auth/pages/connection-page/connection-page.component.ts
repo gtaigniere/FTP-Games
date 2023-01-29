@@ -5,7 +5,6 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../../shared/services/user.service";
 import {LoginRequestPayload} from "../../models/login-request-payload";
-import {of} from "rxjs";
 
 @Component({
   selector: 'app-connection-page',
@@ -41,18 +40,17 @@ export class ConnectionPageComponent implements OnInit {
       password: form.value.pwd
     };
 
-    const testeur = this.authService.login(loginRequestPayLoad).subscribe();
-    console.log('Testeur est : ', testeur);
-    console.log(typeof testeur);
-    if (testeur) {
-      console.log('Connexion OK');
-      this.router.navigate(['/games']);
-    } else {
-      console.log('Pas de connexion');
-      this.activeMsg = true;
-      this.msgClass = 'alert alert-danger';
-      this.msgText = 'Email et/ou mot de passe incorrect(s).';
-    }
+    this.authService.login(loginRequestPayLoad).subscribe(
+        isLogged => {
+          if (isLogged) {
+            this.router.navigate(['/games']);
+          } else {
+            this.activeMsg = true;
+            this.msgClass = 'alert alert-danger';
+            this.msgText = 'Email et/ou mot de passe incorrect(s).';
+          }
+        }
+    );
   }
 
 }
