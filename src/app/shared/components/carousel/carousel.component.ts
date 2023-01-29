@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Game} from "../../game/models/game";
+import {Game} from '../../../game/models/game';
 
 @Component({
   selector: 'app-carousel',

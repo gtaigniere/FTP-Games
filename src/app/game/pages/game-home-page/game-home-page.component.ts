@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {GameService} from "../../services/game.service";
-import {Game} from "../../models/game";
-import {Observable} from "rxjs";
+import {GameService} from '../../services/game.service';
+import {Game} from '../../models/game';
 
 @Component({
-  selector: 'app-game-list',
-  templateUrl: './game-list.component.html',
-  styleUrls: ['./game-list.component.scss']
+  selector: 'app-game-home-page',
+  templateUrl: './game-home-page.component.html',
+  styleUrls: ['./game-home-page.component.scss']
 })
-export class GameListComponent implements OnInit {
+export class GameHomePageComponent implements OnInit {
 
   title: string = 'Les jeux Free-To-Play';
   games: Game[] = [];
@@ -41,4 +40,5 @@ export class GameListComponent implements OnInit {
     this.receivedId = id;
     this.displayGameDetails(this.receivedId);
   }
+
 }

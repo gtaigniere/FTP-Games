@@ -1,0 +1,45 @@
+<h1>{{ title }}</h1>
+
+<div class="card-body">
+
+  <form novalidate #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+
+    <div class="form-group col-md-12 mb-3">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email"
+             placeholder="username@test.fr" required email #emailVar="ngModel"
+             [ngClass]="{'is-invalid': emailVar.touched && !emailVar.valid}">
+
+      <div class="invalid-feedback">
+        <span *ngIf="emailVar.errors?.['required']">
+          Entrez votre Email.
+        </span>
+        <span *ngIf="emailVar.errors?.['email']">
+          L'Email est invalide.
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12 mb-3">
+      <label for="pwd">Mot de passe</label>
+      <input type="password" class="form-control" id="pwd" [(ngModel)]="user.password" name="pwd"
+             placeholder="Mot de passe" required minlength="8" #pwdVar="ngModel"
+             [ngClass]="{'is-invalid': pwdVar.touched && !pwdVar.valid}">
+
+      <div class="invalid-feedback">
+        <span *ngIf="pwdVar.errors?.['required']">
+          Entrez votre mot de passe.
+        </span>
+        <span *ngIf="pwdVar.errors?.['minlength']">
+          Minimum 8 caractères.
+        </span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info" [disabled]="loginForm.form.invalid">Se connecter</button>
+
+  </form>
+
+  <app-message-box *ngIf="activeMsg" [class]="msgClass" [text]="msgText"></app-message-box>
+
+</div>
