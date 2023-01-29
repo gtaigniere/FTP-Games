@@ -7,7 +7,7 @@
     <div class="form-group col-md-12 mb-3">
       <label for="email">Email</label>
       <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email"
-             placeholder="nickname@test.fr" required email #emailVar="ngModel"
+             placeholder="username@test.fr" required email #emailVar="ngModel"
              [ngClass]="{'is-invalid': emailVar.touched && !emailVar.valid}">
 
       <div class="invalid-feedback">

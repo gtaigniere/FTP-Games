@@ -15,7 +15,6 @@ export class AuthService {
     email: '',
     password: ''
   };
-  // userFind: User|undefined = this.user;
 
   constructor(
   ) {
@@ -27,9 +26,12 @@ export class AuthService {
         && user.password === requestPayLoad.password
     );
     if (!userFind) {
+      console.log('userFind is false');
       return of(false);
     }
-    localStorage.setItem('nickname', this.user.username);
+    console.log('userFind is true');
+    this.user = userFind;
+    localStorage.setItem('username', this.user.username);
     return of(true);
   }
 
@@ -39,7 +41,7 @@ export class AuthService {
   }
 
   isLogged(): boolean {
-    if (localStorage.getItem('nickname')) {
+    if (localStorage.getItem('username')) {
       return true;
     }
     return false;
