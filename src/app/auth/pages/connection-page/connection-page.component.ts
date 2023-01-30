@@ -41,8 +41,8 @@ export class ConnectionPageComponent implements OnInit {
     };
 
     this.authService.login(loginRequestPayLoad).subscribe(
-        isLogged => {
-          if (isLogged) {
+      loggedIn => {
+          if (loggedIn) {
             this.router.navigate(['/games']);
           } else {
             this.activeMsg = true;
