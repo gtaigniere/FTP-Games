@@ -10,7 +10,6 @@ export class AuthService {
 
   API_URL: string = 'https://free-to-play-games-database.p.rapidapi.com/api';
 
-  private loggedIn = false;
   private logger = new Subject<boolean>();
 
   constructor(
@@ -26,20 +25,25 @@ export class AuthService {
       return of(false);
     }
     localStorage.setItem('username', userFind.username);
-    this.loggedIn = true;
-    this.logger.next(this.loggedIn);
+    this.logger.next(true);
     return of(true);
   }
 
   logout() {
     localStorage.clear();
-    this.loggedIn = false;
-    this.logger.next(this.loggedIn);
+    this.logger.next(false);
     console.log('A bientôt');
   }
 
-  isLogged(): Observable<boolean> {
+  isLogged(): boolean {
+    return localStorage.getItem('username') !== null;
+  }
+
+  get loggedIn$(): Observable<boolean> {
     return this.logger.asObservable();
   }
 
+  getUsername(): string {
+    return localStorage.getItem('username') as string;
+  }
 }

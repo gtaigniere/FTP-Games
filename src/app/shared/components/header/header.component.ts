@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from "../../../auth/services/auth.service";
 import {Router} from "@angular/router";
-import {Observable, Subscriber} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -20,10 +19,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.isLogged().subscribe(loggedIn => {
+    // Permet de vérifier, lors d'un raffraichissement, si un utilisateur est connecté
+    this.loggedIn = this.authService.isLogged();
+    this.authService.loggedIn$.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
       if (this.loggedIn) {
-        this.username = localStorage.getItem('username') as string;
+        this.username = this.authService.getUsername();
       }
     });
   }

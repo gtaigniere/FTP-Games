@@ -48,6 +48,7 @@ export class ConnectionPageComponent implements OnInit {
             this.activeMsg = true;
             this.msgClass = 'alert alert-danger';
             this.msgText = 'Email et/ou mot de passe incorrect(s).';
+            this.router.navigate(['/games'], { queryParams: { error: true } });
           }
         }
     );

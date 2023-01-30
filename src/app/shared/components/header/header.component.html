@@ -14,7 +14,7 @@
       </ng-template>
       <li *ngIf="loggedIn; else linkNotActiv"><a routerLinkActive="active" [routerLink]="['/games']">Games</a></li>
       <ng-template #linkNotActiv>
-        <li><a href="">Games</a></li>
+        <li><a routerLink="">Games</a></li>
       </ng-template>
     </ul>
   </nav>
