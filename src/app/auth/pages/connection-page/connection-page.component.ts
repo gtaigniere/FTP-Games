@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {User} from "../../../shared/models/user";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../../shared/services/user.service";
 import {LoginRequestPayload} from "../../models/login-request-payload";
@@ -13,18 +12,20 @@ import {LoginRequestPayload} from "../../models/login-request-payload";
 })
 export class ConnectionPageComponent implements OnInit {
 
-  title: string = 'Connexion';
-  user: User = {
+  title = 'Connexion';
+  user = {
     username: '',
     email: '',
     password: ''
   };
 
-  activeMsg: boolean = false;
-  msgClass: string = '';
-  msgText: string = '';
+  activeMsg = false;
+  msgClass = '';
+  msgText = '';
+  testeur = '';
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private authService: AuthService,
     private router: Router
@@ -32,6 +33,10 @@ export class ConnectionPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.testeur = params.get('test') as string;
+      console.log(this.testeur);
+    });
   }
 
   loginUser(form: NgForm) {
@@ -48,7 +53,12 @@ export class ConnectionPageComponent implements OnInit {
             this.activeMsg = true;
             this.msgClass = 'alert alert-danger';
             this.msgText = 'Email et/ou mot de passe incorrect(s).';
-            this.router.navigate(['/games'], { queryParams: { error: true } });
+            this.router.navigate(['/connection'], {
+              queryParams: {
+                error: true,
+                test: 'Coucou'
+              }
+            });
           }
         }
     );
