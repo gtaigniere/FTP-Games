@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LoginRequestPayload} from "../models/login-request-payload";
 import {users} from "../../shared/models/user";
-import {Observable, of} from "rxjs";
+import {Observable, of, Subject, Subscriber} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import {Observable, of} from "rxjs";
 export class AuthService {
 
   API_URL: string = 'https://free-to-play-games-database.p.rapidapi.com/api';
+
+  private logger = new Subject<boolean>();
 
   constructor(
   ) {
@@ -23,19 +25,25 @@ export class AuthService {
       return of(false);
     }
     localStorage.setItem('username', userFind.username);
+    this.logger.next(true);
     return of(true);
   }
 
   logout() {
     localStorage.clear();
+    this.logger.next(false);
     console.log('A bientôt');
   }
 
   isLogged(): boolean {
-    if (localStorage.getItem('username')) {
-      return true;
-    }
-    return false;
+    return localStorage.getItem('username') !== null;
   }
 
+  get loggedIn$(): Observable<boolean> {
+    return this.logger.asObservable();
+  }
+
+  getUsername(): string {
+    return localStorage.getItem('username') as string;
+  }
 }

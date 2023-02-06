@@ -1,0 +1,21 @@
+<header>
+  <div>
+
+    <p *ngIf="loggedIn">Connecté : <span>{{ username }}</span></p>
+
+  </div>
+
+  <nav>
+    <ul>
+
+      <li *ngIf="loggedIn; else connection" (click)="disconnection()"><a routerLinkActive="active" [routerLink]="['/connection']">Déconnexion</a></li>
+      <ng-template #connection>
+        <li (click)="goToConnection()"><a routerLinkActive="active" [routerLink]="['/connection']">Connexion</a></li>
+      </ng-template>
+      <li *ngIf="loggedIn; else linkNotActiv"><a routerLinkActive="active" [routerLink]="['/games']">Games</a></li>
+      <ng-template #linkNotActiv>
+        <li><a routerLink="">Games</a></li>
+      </ng-template>
+    </ul>
+  </nav>
+</header>
