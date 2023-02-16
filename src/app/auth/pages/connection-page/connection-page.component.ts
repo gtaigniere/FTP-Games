@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
@@ -19,6 +19,7 @@ export class ConnectionPageComponent implements OnInit {
     email: '',
     password: ''
   };
+  loggedIn = false;
 
   activeMsg = false;
   msgClass = '';

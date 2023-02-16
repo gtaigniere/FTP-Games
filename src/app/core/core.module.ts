@@ -1,12 +1,17 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {PermissionDirective} from "./directives/permission.directive";
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PermissionDirective
+  ],
   imports: [
     CommonModule
   ],
-  providers: []
+  exports: [
+    PermissionDirective
+  ]
 })
 export class CoreModule {
 }

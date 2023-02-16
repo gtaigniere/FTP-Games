@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ConnectionPageComponent} from './pages/connection-page/connection-page.component';
 import {SharedModule} from "../shared/shared.module";
+import {CoreModule} from "../core/core.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {SharedModule} from "../shared/shared.module";
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ]
 })
 export class AuthModule {
