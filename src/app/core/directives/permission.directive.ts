@@ -1,5 +1,5 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
-import {AuthService} from "../../auth/services/auth.service";
+import {UserService} from "../../shared/services/user.service";
 
 @Directive({
   selector: '[appPermission]'
@@ -7,17 +7,17 @@ import {AuthService} from "../../auth/services/auth.service";
 export class PermissionDirective implements OnInit {
 
   @Input('appPermission')
-  userConnected!: boolean;
+  roleToCheck!: string;
 
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainerRef: ViewContainerRef,
-    private authService: AuthService
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    this.userConnected = this.authService.isLogged();
-    if (!this.userConnected) {
+    const isRoleValid = this.userService.isUserInRole(this.roleToCheck);
+    if (isRoleValid) {
       this.viewContainerRef.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainerRef.clear();

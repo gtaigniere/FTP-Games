@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {ConnectionPageComponent} from './pages/connection-page/connection-page.component';
 import {SharedModule} from "../shared/shared.module";
 import {CoreModule} from "../core/core.module";
+import {RouterLinkWithHref} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {CoreModule} from "../core/core.module";
     CommonModule,
     FormsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    RouterLinkWithHref
   ]
 })
 export class AuthModule {

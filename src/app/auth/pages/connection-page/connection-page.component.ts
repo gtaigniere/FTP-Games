@@ -17,10 +17,10 @@ export class ConnectionPageComponent implements OnInit {
   user = {
     username: '',
     email: '',
-    password: ''
+    password: '',
+    role: ''
   };
   loggedIn = false;
-  userConnected!: boolean;
 
   activeMsg = false;
   msgClass = '';

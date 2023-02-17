@@ -25,6 +25,7 @@ export class AuthService {
       return of(false);
     }
     localStorage.setItem('username', userFind.username);
+    localStorage.setItem('role', userFind.role);
     this.logger.next(true);
     return of(true);
   }
@@ -46,4 +47,5 @@ export class AuthService {
   getUsername(): string {
     return localStorage.getItem('username') as string;
   }
+
 }
