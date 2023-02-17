@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <button *appPermission="!loggedIn" type="submit" class="btn btn-info" [disabled]="loginForm.form.invalid">Se connecter</button>
+    <button *appPermission="!userConnected" type="submit" class="btn btn-info" [disabled]="loginForm.form.invalid">Se connecter</button>
   </form>
 
   <app-message-box *ngIf="activeMsg" [class]="msgClass" [text]="msgText"></app-message-box>

@@ -16,8 +16,8 @@ export class PermissionDirective implements OnInit {
   ) {}
 
   ngOnInit() {
-    const isUserConnected = this.authService.isLogged();
-    if (!isUserConnected) {
+    this.userConnected = this.authService.isLogged();
+    if (!this.userConnected) {
       this.viewContainerRef.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainerRef.clear();

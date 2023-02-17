@@ -20,6 +20,7 @@ export class ConnectionPageComponent implements OnInit {
     password: ''
   };
   loggedIn = false;
+  userConnected!: boolean;
 
   activeMsg = false;
   msgClass = '';
