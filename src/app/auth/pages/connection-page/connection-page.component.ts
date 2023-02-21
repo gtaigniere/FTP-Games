@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
@@ -30,7 +30,7 @@ export class ConnectionPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {
   }
 

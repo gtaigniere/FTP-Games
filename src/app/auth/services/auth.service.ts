@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LoginRequestPayload} from "../models/login-request-payload";
 import {users} from "../../shared/models/user";
-import {Observable, of, Subject, Subscriber} from "rxjs";
+import {Observable, of, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

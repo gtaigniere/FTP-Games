@@ -1,16 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PermissionDirective} from "./directives/permission.directive";
+import {MyNgIfDirective} from "./directives/my-ng-if.directive";
 
 @NgModule({
   declarations: [
-    PermissionDirective
+    PermissionDirective,
+    MyNgIfDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    PermissionDirective
+    PermissionDirective,
+    MyNgIfDirective
   ]
 })
 export class CoreModule {
