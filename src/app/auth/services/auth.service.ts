@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LoginRequestPayload} from "../models/login-request-payload";
 import {users} from "../../shared/models/user";
-import {Observable, of, Subject, Subscriber} from "rxjs";
+import {Observable, of, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,7 @@ export class AuthService {
       return of(false);
     }
     localStorage.setItem('username', userFind.username);
+    localStorage.setItem('role', userFind.role);
     this.logger.next(true);
     return of(true);
   }
@@ -46,4 +47,5 @@ export class AuthService {
   getUsername(): string {
     return localStorage.getItem('username') as string;
   }
+
 }

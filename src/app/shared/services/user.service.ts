@@ -18,4 +18,12 @@ export class UserService {
     return of(users.find(user => user.email === email)) as Observable<User>;
   }
 
+  getUserRole(): string {
+    return localStorage.getItem('role') as string;
+  }
+
+  isAdminUser(role: string): boolean {
+    return role === this.getUserRole();
+  }
+
 }

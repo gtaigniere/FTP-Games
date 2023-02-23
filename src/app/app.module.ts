@@ -28,9 +28,10 @@ import {SharedModule} from "./shared/shared.module";
     SharedModule
   ],
   providers: [
-   {provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptReqInterceptor, multi: true}
   ],
-  exports: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
