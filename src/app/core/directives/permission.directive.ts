@@ -1,6 +1,6 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
-import {UserService} from "../../shared/services/user.service";
 import {AuthService} from "../../auth/services/auth.service";
+import {UserService} from "../../shared/services/user.service";
 
 @Directive({
   selector: '[appPermission]'
@@ -18,7 +18,7 @@ export class PermissionDirective implements OnInit {
   ) {}
 
   ngOnInit() {
-    const isRoleValid = this.userService.isUserInRole(this.roleToCheck);
+    const isRoleValid = this.userService.isAdminUser(this.roleToCheck);
     if (isRoleValid) {
       this.viewContainerRef.createEmbeddedView(this.templateRef);
     } else {

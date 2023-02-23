@@ -1,14 +1,10 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 import {AuthService} from "../../auth/services/auth.service";
-import {bootstrapApplication} from "@angular/platform-browser";
 
 @Directive({
   selector: '[myNgIf]'
 })
 export class MyNgIfDirective implements OnInit {
-
-  @Input('myNgIf')
-  loggedIn!: boolean;
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -17,8 +13,7 @@ export class MyNgIfDirective implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loggedIn = this.authService.isLogged();
-    this.displayWithDirective(this.loggedIn);
+    this.displayWithDirective(this.authService.isLogged());
     this.authService.loggedIn$.subscribe(
       display => this.displayWithDirective(display)
     );

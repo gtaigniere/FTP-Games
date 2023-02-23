@@ -22,7 +22,7 @@ export class UserService {
     return localStorage.getItem('role') as string;
   }
 
-  isUserInRole(role: string): boolean {
+  isAdminUser(role: string): boolean {
     return role === this.getUserRole();
   }
 
