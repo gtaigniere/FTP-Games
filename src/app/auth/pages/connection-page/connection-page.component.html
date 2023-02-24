@@ -43,6 +43,6 @@
 
   <p><a *showIfLogged id="gamesButton" class="btn btn-danger" [routerLink]="['/games']">Games</a></p>
 
-  <app-message-box *ngIf="activeMsg" [typeMessage]="'erreur'" [text]="'email ou mdp incorrect'"></app-message-box>
+  <app-message-box *ngIf="error" [typeMessage]="'erreur'" [text]="'email ou mdp incorrect'"></app-message-box>
 
 </div>

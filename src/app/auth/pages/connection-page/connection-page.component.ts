@@ -20,7 +20,7 @@ export class ConnectionPageComponent implements OnInit {
     password: '',
     role: ''
   };
-  activeMsg = false;
+  error = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,7 +34,7 @@ export class ConnectionPageComponent implements OnInit {
     this.activatedRoute.queryParamMap.pipe(filter(
       params => params.has('error'))
     ).subscribe(params => {
-      this.activeMsg = true;
+      this.error = true;
     });
   }
 
