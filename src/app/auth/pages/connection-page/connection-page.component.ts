@@ -23,7 +23,7 @@ export class ConnectionPageComponent implements OnInit {
   loggedIn = false;
 
   activeMsg = false;
-  msgClass = '';
+  typeMsg: 'erreur' | 'succes' = 'succes';
   msgText = '';
 
   constructor(
@@ -39,7 +39,7 @@ export class ConnectionPageComponent implements OnInit {
       params => params.has('error'))
     ).subscribe(params => {
       this.activeMsg = true;
-      this.msgClass = 'alert alert-danger';
+      this.typeMsg = 'erreur';
       this.msgText = 'Email et/ou mot de passe incorrect(s).';
     });
   }

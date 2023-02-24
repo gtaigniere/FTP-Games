@@ -3,11 +3,11 @@ import {AuthService} from "../../auth/services/auth.service";
 import {UserService} from "../../shared/services/user.service";
 
 @Directive({
-  selector: '[appPermission]'
+  selector: '[displayIfIdentified]'
 })
-export class PermissionDirective implements OnInit {
+export class DisplayIfIdentifiedDirective implements OnInit {
 
-  @Input('appPermission')
+  @Input('displayIfIdentified')
   roleToCheck!: string;
 
   constructor(
