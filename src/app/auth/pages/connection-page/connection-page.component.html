@@ -39,10 +39,10 @@
     <button type="submit" class="btn btn-info" [disabled]="loginForm.form.invalid">Se connecter</button>
   </form>
 
-  <p><a *appPermission="'admin'" id="testButton" class="btn btn-warning" [routerLink]="['/games']">Return to Games</a></p>
+  <p><a *hasRole="'admin'" id="returnButton" class="btn btn-warning" [routerLink]="['/games']">Return to Games</a></p>
 
-  <p><a *myNgIf="loggedIn" id="testButton2" class="btn btn-danger" [routerLink]="['/games']">Games</a></p>
+  <p><a *showIfLogged id="gamesButton" class="btn btn-danger" [routerLink]="['/games']">Games</a></p>
 
-  <app-message-box *ngIf="activeMsg" [class]="msgClass" [text]="msgText"></app-message-box>
+  <app-message-box *ngIf="error" [typeMessage]="'erreur'" [text]="'email ou mdp incorrect'"></app-message-box>
 
 </div>

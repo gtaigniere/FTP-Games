@@ -2,9 +2,9 @@ import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/
 import {AuthService} from "../../auth/services/auth.service";
 
 @Directive({
-  selector: '[myNgIf]'
+  selector: '[showIfLogged]'
 })
-export class MyNgIfDirective implements OnInit {
+export class ShowIfLogged implements OnInit {
 
   constructor(
     private templateRef: TemplateRef<any>,

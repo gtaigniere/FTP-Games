@@ -20,11 +20,7 @@ export class ConnectionPageComponent implements OnInit {
     password: '',
     role: ''
   };
-  loggedIn = false;
-
-  activeMsg = false;
-  msgClass = '';
-  msgText = '';
+  error = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -38,9 +34,7 @@ export class ConnectionPageComponent implements OnInit {
     this.activatedRoute.queryParamMap.pipe(filter(
       params => params.has('error'))
     ).subscribe(params => {
-      this.activeMsg = true;
-      this.msgClass = 'alert alert-danger';
-      this.msgText = 'Email et/ou mot de passe incorrect(s).';
+      this.error = true;
     });
   }
 

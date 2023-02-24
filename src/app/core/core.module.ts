@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PermissionDirective} from "./directives/permission.directive";
-import {MyNgIfDirective} from "./directives/my-ng-if.directive";
+import {HasRoleDirective} from "./directives/has-role.directive";
+import {ShowIfLogged} from "./directives/show-if-logged.directive";
 
 @NgModule({
   declarations: [
-    PermissionDirective,
-    MyNgIfDirective
+    HasRoleDirective,
+    ShowIfLogged
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    PermissionDirective,
-    MyNgIfDirective
+    HasRoleDirective,
+    ShowIfLogged
   ]
 })
 export class CoreModule {

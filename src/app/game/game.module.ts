@@ -4,13 +4,11 @@ import {GameDetailComponent} from './components/game-detail/game-detail.componen
 import {GameHomePageComponent} from './pages/game-home-page/game-home-page.component';
 import {SharedModule} from "../shared/shared.module";
 import {RouterLinkWithHref} from "@angular/router";
-import {TextColorDirective} from "../core/directives/text-color.directive";
 
 @NgModule({
   declarations: [
     GameDetailComponent,
-    GameHomePageComponent,
-    TextColorDirective
+    GameHomePageComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +16,6 @@ import {TextColorDirective} from "../core/directives/text-color.directive";
     RouterLinkWithHref
   ],
   exports: [
-    TextColorDirective
   ]
 })
 export class GameModule {
