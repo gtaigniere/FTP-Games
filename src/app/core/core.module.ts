@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DisplayIfIdentifiedDirective} from "./directives/display-if-identified.directive";
-import {MyNgIfDirective} from "./directives/my-ng-if.directive";
+import {HasRoleDirective} from "./directives/has-role.directive";
+import {ShowIfLogged} from "./directives/show-if-logged.directive";
 
 @NgModule({
   declarations: [
-    DisplayIfIdentifiedDirective,
-    MyNgIfDirective
+    HasRoleDirective,
+    ShowIfLogged
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    DisplayIfIdentifiedDirective,
-    MyNgIfDirective
+    HasRoleDirective,
+    ShowIfLogged
   ]
 })
 export class CoreModule {

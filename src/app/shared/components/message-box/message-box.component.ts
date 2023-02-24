@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 export class MessageBoxComponent {
 
   @Input()
-  typeMessage: 'erreur' | 'succes';
+  typeMessage: 'erreur' | 'succes' = 'succes';
   @Input()
   text: string = '';
 

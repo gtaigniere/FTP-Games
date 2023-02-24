@@ -20,11 +20,7 @@ export class ConnectionPageComponent implements OnInit {
     password: '',
     role: ''
   };
-  loggedIn = false;
-
   activeMsg = false;
-  typeMsg: 'erreur' | 'succes' = 'succes';
-  msgText = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -39,8 +35,6 @@ export class ConnectionPageComponent implements OnInit {
       params => params.has('error'))
     ).subscribe(params => {
       this.activeMsg = true;
-      this.typeMsg = 'erreur';
-      this.msgText = 'Email et/ou mot de passe incorrect(s).';
     });
   }
 
