@@ -5,10 +5,12 @@ import {ConnectionPageComponent} from './pages/connection-page/connection-page.c
 import {SharedModule} from "../shared/shared.module";
 import {CoreModule} from "../core/core.module";
 import {RouterLinkWithHref} from "@angular/router";
+import { SubscriptionPageComponent } from './pages/subscription-page/subscription-page.component';
 
 @NgModule({
   declarations: [
-    ConnectionPageComponent
+    ConnectionPageComponent,
+    SubscriptionPageComponent
   ],
   imports: [
     CommonModule,
