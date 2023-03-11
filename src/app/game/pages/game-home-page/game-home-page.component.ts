@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from '../../services/game.service';
 import {Game} from '../../models/game';
+import {filter, find} from "rxjs";
 
 @Component({
   selector: 'app-game-home-page',
@@ -26,13 +27,24 @@ export class GameHomePageComponent implements OnInit {
 
   displayGamesList() {
     this.gameService.getAll().subscribe(
-      games => this.games = games
-    );
+      games => {
+        this.games = games
+      .filter(
+        game => {
+          console.log(game.title);
+          console.log(game.releaseDate);
+          return game.id > 200 && game.id < 220;
+        }
+      );
+    });
   }
 
   displayGameDetails(receivedId: number) {
     this.gameService.getById(receivedId).subscribe(
-      activeGame => this.activeGame = activeGame
+      activeGame => {
+        this.activeGame = activeGame;
+        console.log(activeGame.releaseDate + ': string');
+      }
     );
   }
 
@@ -40,5 +52,4 @@ export class GameHomePageComponent implements OnInit {
     this.receivedId = id;
     this.displayGameDetails(this.receivedId);
   }
-
 }

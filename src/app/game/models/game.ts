@@ -1,13 +1,12 @@
-export interface Game {
+export class Game {
   id: number;
   title: string;
-  thumbnail?: string;
-  short_description?: string;
+  thumbnail: string;
   description?: string;
   genre?: string;
   platform?: string;
   developer?: string;
-  releaseDate?: Date;
+  releaseDate: Date;
   MinSystemReq?: {
     os?: string,
     processor?: string,
@@ -19,13 +18,24 @@ export interface Game {
     id?: number,
     image?: string
   }[];
+
+  constructor(
+    id: number,
+    title: string,
+    thumbnail: string,
+    release_date: string
+  ) {
+    this.id = id;
+    this.title = title;
+    this.thumbnail = thumbnail;
+    this.releaseDate = new Date(release_date);
+  }
 }
 
 export const createGame = (data: any) => ({
   id: data.id,
   title: data.title,
   thumbnail: data.thumbnail,
-  short_description: data.short_description,
   description: data.description,
   genre: data.genre,
   platform: data.platform,
@@ -33,4 +43,11 @@ export const createGame = (data: any) => ({
   releaseDate: new Date(data.release_date),
   MinSystemReq: data.minimum_system_requirements,
   screenshots: data.screenshots
+} as Game);
+
+export const createGameForList = (data: any) => ({
+  id: data.id,
+  title: data.title,
+  thumbnail: data.thumbnail,
+  releaseDate: new Date(data.release_date)
 } as Game);
