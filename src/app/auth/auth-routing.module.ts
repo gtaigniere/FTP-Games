@@ -8,8 +8,7 @@ import {RegistrationPageComponent} from "./pages/registration-page/registration-
 const routes = [
   {path: 'connection', component: ConnectionPageComponent},
   {path: 'registration', component: RegistrationPageComponent},
-  {path: '', component: ConnectionPageComponent},
-  {path: '**', redirectTo: 'connection'}
+  {path: '**', redirectTo: '/auth/connection'}
 ];
 
 @NgModule({
