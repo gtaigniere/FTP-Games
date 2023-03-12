@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {createGame, createGameForList, Game} from '../models/game';
+import {createGame, createGameLight, Game} from '../models/game';
 
 @Injectable({
   providedIn: 'root'
@@ -22,20 +22,8 @@ export class GameService {
   }
 
   getAll(): Observable<Game[]> {
-    // return this.httpClient.get<Game[]>(`${this.API_URL}/games`);
-    const gamesObs = this.httpClient.get<any[]>(`${this.API_URL}/games`);
-    gamesObs.forEach(game => game.map(data => {
-      const currentGame = createGameForList(data);
-      console.log(currentGame.releaseDate + ': in getAll');
-      return currentGame;
-    }));
-    return gamesObs;
+    return this.httpClient.get<Game[]>(`${this.API_URL}/games`)
+      .pipe(map(datas => datas.map(data => createGameLight(data))
+    ));
   }
 }
-
-//   const currentGame = new Game(
-//     data.id,
-//     data.title,
-//     data.thumbnail,
-//     data.release_date
-//   );

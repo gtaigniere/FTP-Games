@@ -38,7 +38,7 @@ export class RegistrationPageComponent implements OnInit {
       username: [null, [Validators.required, Validators.pattern(this.usernameRegex)]],
       email: [null, [Validators.required, Validators.pattern(this.emailRegex)]],
       password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
-      pwdConfirm: [null, [Validators.required]]
+      pwdConfirm: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
     });
   }
 
