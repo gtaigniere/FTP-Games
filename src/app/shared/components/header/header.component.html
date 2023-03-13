@@ -10,8 +10,8 @@
 
       <li *ngIf="loggedIn; else connection" (click)="disconnection()"><a routerLinkActive="active" [routerLink]="['/connection']">Déconnexion</a></li>
       <ng-template #connection>
-        <li (click)="goToRegistration()"><a routerLinkActive="active" [routerLink]="['/registration']">Inscription</a></li>
-        <li (click)="goToConnection()"><a routerLinkActive="active" [routerLink]="['/connection']">Connexion</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/auth/registration']">Inscription</a></li>
+        <li><a routerLinkActive="active" [routerLink]="['/auth/connection']">Connexion</a></li>
       </ng-template>
 
       <li *ngIf="loggedIn; else linkNotActiv"><a routerLinkActive="active" [routerLink]="['/games']">Games</a></li>

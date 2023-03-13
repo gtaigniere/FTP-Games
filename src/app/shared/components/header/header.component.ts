@@ -29,16 +29,16 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  goToConnection() {
-    this.router.navigate(['/connection']);
-  }
+  // goToConnection() {
+  //   this.router.navigate(['/connection']);
+  // }
 
   disconnection() {
     this.authService.logout();
   }
 
-  goToRegistration() {
-    this.router.navigate(['/registration']);
-  }
+  // goToRegistration() {
+  //   this.router.navigate(['/registration']);
+  // }
 
 }
