@@ -14,7 +14,7 @@ export class GameHomePageComponent implements OnInit {
   title: string = 'Les jeux Free-To-Play';
   games: Game[] = [];
   activeGame?: Game;
-  receivedId?: number;
+  receivedId: number = 1;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,8 +23,17 @@ export class GameHomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.displayGamesList();
-    this.displayGameDetails(this.receivedId = 1); //id par défaut
+    this.activatedRoute.paramMap.subscribe(params => {
+      const id = params.get('id') as string;
+      if (id) {
+        this.gameService.getById(+id).subscribe(
+          game => this.activeGame = game
+        );
+      }
+      this.fetchGameDetails(this.receivedId); //id par défaut
+    });
+
+    this.fetchGames();
   }
 
   fetchGames() {
@@ -42,6 +51,6 @@ export class GameHomePageComponent implements OnInit {
 
   receivedGameId(id: number) {
     this.receivedId = id;
-    this.displayGameDetails(this.receivedId);
+    this.fetchGameDetails(this.receivedId);
   }
 }
