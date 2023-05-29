@@ -16,14 +16,14 @@ export class GameService {
   }
 
   getById(id: number): Observable<Game> {
-    return this.httpClient.get<any>(`${this.API_URL}/game?id=${id}`)
+    return this.httpClient.get<Game>(`${this.API_URL}/game?id=${id}`)
       .pipe(map(data => createGame(data))
     );
   }
 
   getAll(): Observable<Game[]> {
     return this.httpClient.get<Game[]>(`${this.API_URL}/games`)
-      .pipe(map(datas => datas.map(data => createGameLight(data))
+      .pipe(map(datas => datas.map(createGameLight)
     ));
   }
 }

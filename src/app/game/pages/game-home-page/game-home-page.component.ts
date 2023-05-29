@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from '../../services/game.service';
 import {Game} from '../../models/game';
-import {filter, find} from "rxjs";
+import {map} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -36,23 +36,17 @@ export class GameHomePageComponent implements OnInit {
     this.displayGameDetails(this.receivedId = 1); //id par défaut
   }
 
-  displayGamesList() {
-    this.gameService.getAll().subscribe(
-      games => {
-        this.games = games.filter(
-          game => game.releaseDate ? game.releaseDate.getFullYear() > new Date('2020-01-01').getFullYear() : false
-        );
-      }
-    );
+  fetchGames() {
+    this.gameService.getAll()
+      .pipe(
+        map(games => games.filter(game => game.releaseDate && game.releaseDate.getFullYear() > 2020))
+      )
+      .subscribe(games => this.games = games);
   }
 
-  displayGameDetails(receivedId: number) {
-    this.gameService.getById(receivedId).subscribe(
-      activeGame => {
-        this.activeGame = activeGame;
-        console.log(activeGame.releaseDate + ': string');
-      }
-    );
+  fetchGameDetails(receivedId: number) {
+    this.gameService.getById(receivedId)
+      .subscribe(activeGame => this.activeGame = activeGame);
   }
 
   receivedGameId(id: number) {
