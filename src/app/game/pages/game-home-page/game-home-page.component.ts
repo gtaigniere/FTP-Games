@@ -30,6 +30,7 @@ export class GameHomePageComponent implements OnInit {
           game => this.activeGame = game
         );
       }
+
       this.fetchGameDetails(this.receivedId); //id par défaut
     });
 
